@@ -1,0 +1,23 @@
+{
+  "skill_name": "patch-to-powerup",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这个报告又不像客户看的，别再给我加 validator 了。帮我判断这是哪里的问题，应该怎么修。",
+      "expected_output": "Should classify the complaint as a producer-quality or reader-task problem, identify the first generation point, avoid validator-only fixes, propose a producer-level change, and include official-path proof.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "这个节点到底服务谁我没说清，但你不要继续按后台字段做。先帮我压成一个可确认的产品合同。",
+      "expected_output": "Should draft a node-role contract with user, job, default visible layer, backstage-only fields, forbidden behavior, and downstream reads, then ask for correction of only the wrong slots.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我们每次说 slogan 不好，你都加禁词或 repair。我要的是系统一开始就会写对。",
+      "expected_output": "Should distinguish quality from danger, locate the first forced creative act, move slogan method into the producer or input builder, remove or bound fallback, and preserve validators only as guardrails.",
+      "files": []
+    }
+  ]
+}
