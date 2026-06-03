@@ -18,6 +18,12 @@
       "prompt": "我们每次说 slogan 不好，你都加禁词或 repair。我要的是系统一开始就会写对。",
       "expected_output": "Should distinguish quality from danger, locate the first forced creative act, move slogan method into the producer or input builder, remove or bound fallback, and preserve validators only as guardrails.",
       "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "我连续提了三轮修改，但不是要推翻上一轮。先帮我判断这些反馈是取并集、演进、收窄、替换、推翻、例外还是实验，不要动不动回退。",
+      "expected_output": "Should use the iteration delta checklist, default to union/evolution/constrain when rollback is not explicit, name what to keep/add/change/remove, and require official proof for replacement, deprecation, or reversal.",
+      "files": []
     }
   ]
 }

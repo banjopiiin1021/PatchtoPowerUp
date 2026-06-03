@@ -235,3 +235,31 @@ Rules:
 - Do not ask the user to write the whole product definition from scratch.
 - After confirmation, bind producer prompt, packet schema, UI surface, and tests to this contract.
 - If the UI and producer disagree about this contract, the producer contract wins and the UI must be repaired to match it.
+
+## Pattern 12: Iteration Delta Ledger
+
+Use when feedback arrives across several rounds and the team risks treating every new correction as rollback.
+
+```yaml
+iteration_delta:
+  new_feedback: ""
+  current_contract_touched: ""
+  relationship: "union | evolution | constrain | replace | reversal | exception | experiment | deprecate"
+  keep:
+    - ""
+  add:
+    - ""
+  change:
+    - ""
+  remove_or_deprecate:
+    - ""
+  official_proof_needed:
+    - ""
+```
+
+Rules:
+
+- Default to `union`, `evolution`, or `constrain` unless the user explicitly asks to undo.
+- Never delete a working capability just because the next feedback adds a new boundary.
+- If a rule is replaced, name the old rule and add a no-read/no-use check for the old path.
+- If something is only an experiment, label it non-authoritative and define promotion criteria.

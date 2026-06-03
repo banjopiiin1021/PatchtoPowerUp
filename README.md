@@ -112,6 +112,45 @@ The skill separates feedback into five placements:
 The common mistake is making `quality` behave like `danger`.
 That creates a fortress of validators around a producer that still starts wrong.
 
+## Iteration Is Usually Not Rollback
+
+Multi-round product feedback is often cumulative.
+
+The user may not be saying:
+
+> Undo what we just did.
+
+They may be saying:
+
+> Keep that, but add the missing boundary.
+
+or:
+
+> The direction is right, but the mechanism is still at the wrong layer.
+
+So the skill adds an iteration delta check before implementation:
+
+```text
+new feedback:
+current contract it touches:
+relationship: union | evolution | constrain | replace | reversal | exception | experiment | deprecate
+keep:
+add:
+change:
+remove/deprecate:
+official proof needed:
+```
+
+Default bias:
+
+- no explicit "undo" -> start from `union`, `evolution`, or `constrain`
+- "too much / too detailed / do not expose this" -> usually `constrain`, not reversal
+- "better abstraction" -> usually `evolution`
+- mutually exclusive old/new rules -> `replace`
+- true rollback -> `reversal`, and it should close the old path intentionally
+
+This prevents the AI from deleting useful capability just because the next feedback adds another boundary.
+
 ## Product Shape: Ask A Smaller Question
 
 When the user has not fully defined who a node serves, the AI should not ask:
@@ -155,6 +194,7 @@ The bundled pattern library includes:
 - `Rich Packet -> Minimal Decision Surface`: expose the smallest human decision object.
 - `Fallback Shadow Audit`: find fallback that recreates missing meaning downstream.
 - `Node Role Contract`: clarify who a node serves before implementation.
+- `Iteration Delta Ledger`: keep, add, change, and deprecate explicitly across feedback rounds.
 
 See [references/producer_pattern_library.md](references/producer_pattern_library.md).
 
@@ -169,6 +209,7 @@ PatchtoPowerUp/
 │   └── capability_consumption_map.md
 └── references/
     ├── producer_pattern_library.md
+    ├── iteration_delta_checklist.md
     └── repo_contract_template.md
 ```
 

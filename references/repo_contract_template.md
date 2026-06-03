@@ -20,6 +20,7 @@ system_capability_iteration:
   first_draft_test_required: true
   consumption_map_required: true
   judgement_standard_required: true
+  iteration_delta_checklist_required: true
   problem_classes:
     - single_bug
     - path_fork
@@ -31,6 +32,7 @@ system_capability_iteration:
   intervention_order:
     - identify_user_symptom_and_real_target
     - extract_human_judgement_standard
+    - classify_iteration_delta
     - classify_problem
     - classify_feedback_placement
     - locate_first_decision_entrypoint
@@ -43,6 +45,15 @@ system_capability_iteration:
     - test_official_entrypoint
     - close_or_demote_old_path
   producer_before_validator: true
+  iteration_delta_relationships:
+    - union
+    - evolution
+    - constrain
+    - replace
+    - reversal
+    - exception
+    - experiment
+    - deprecate
   feedback_placement:
     preference:
       default_handling: prompt_aesthetic_or_human_feedback
@@ -102,6 +113,7 @@ system_capability_iteration:
 
 - `producer_before_validator` means the first draft or first decision must change before downstream checks can be called a fix.
 - `judgement_standard_required` means the system captures what the human taught as "good" before translating it into code.
+- `iteration_delta_checklist_required` prevents multi-round feedback from becoming accidental rollback.
 - `consumption_map_required` means every meaningful capability change must name source, official entrypoint, first forced act, runtime artifact, downstream consumer, guardrail, and proof.
 - `feedback_placement` prevents preference and quality issues from becoming hard blockers by default.
 - `forbidden_completion_claims` prevents fake closure from validation, repair, fallback, UI hiding, or metadata alone.

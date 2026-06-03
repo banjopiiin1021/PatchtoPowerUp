@@ -51,6 +51,10 @@ Use this skill immediately when the user says or implies:
 - "客户看得懂吗"
 - "这不是给客户看的"
 - "我没有说清它是谁用的"
+- "取并集"
+- "不要动不动回退"
+- "这是演进还是推翻"
+- "多次反馈怎么合并"
 
 If the issue also involves installed capability not entering the main path, use `capability-frontloading`.
 If the issue also involves duplicate paths or one evolving contract, use `single-contract-evolution`.
@@ -136,6 +140,46 @@ Downstream: Deck reads the human-edited visible blueprint first.
 If the user confirms, implement against this contract.
 If they correct one or two slots, update the contract before code.
 
+## Iteration Delta Checklist
+
+Multiple rounds of human feedback are often not reversals.
+They are frequently unions, refinements, or constraints over a still-valid direction.
+
+Before treating a new comment as "undo the previous work", classify its relationship to the current contract:
+
+- `union`: keep the existing rule and add a missing dimension.
+- `evolution`: keep the intent but upgrade the mechanism or abstraction.
+- `constrain`: narrow when or where the rule applies.
+- `replace`: swap one rule for another because the old rule is no longer correct.
+- `reversal`: explicitly undo a prior decision; this needs strong evidence or user confirmation.
+- `exception`: handle a one-off case without changing the general method.
+- `experiment`: try a non-authoritative path with promotion criteria.
+- `deprecate`: close an old path, rule, fallback, or visible surface.
+
+Use this checklist before implementation:
+
+```text
+new feedback:
+current contract it touches:
+relationship:
+keep:
+add:
+change:
+remove/deprecate:
+open question:
+official proof needed:
+```
+
+Default bias:
+
+- If the user adds a new dissatisfaction without saying "undo", treat it as `union` or `evolution` first.
+- If the user says "too much", "too detailed", "not this layer", or "do not expose this", often treat it as `constrain`, not reversal.
+- If the user gives a sharper product identity, treat it as `evolution` of the node contract unless it directly contradicts the prior role.
+- Do not delete a working capability just because the next feedback adds another boundary.
+- Do not keep conflicting rules alive. If it is truly replacement or reversal, name what is being replaced and close the old path.
+
+The goal is cumulative product learning without accidental rollback.
+
 ## Translate Complaints Into Product Shape
 
 The user may describe product shape through dissatisfaction instead of product language.
@@ -190,6 +234,7 @@ Before implementation, produce this map:
 ```text
 problem symptom
 -> judgement standard
+-> iteration relationship
 -> root-cause layer
 -> capability source
 -> official entrypoint
@@ -336,6 +381,7 @@ Do not write AI pause instructions such as "wait for approval" as the system fix
 Produce reviewable artifacts:
 
 - classification result
+- iteration delta checklist
 - consumption map
 - proposed contract patch
 - changed producer entrypoint
@@ -378,6 +424,7 @@ Do not claim completion unless you can name:
 - the user's symptom and real target
 - the judgement standard learned from the human
 - the node-role hypothesis or product contract, if product shape was unclear
+- the iteration relationship: union, evolution, constrain, replace, reversal, exception, experiment, or deprecate
 - the problem class
 - the feedback placement: preference, quality, contract, capability, or danger
 - whether the correction is a case fix or method upgrade
@@ -395,7 +442,7 @@ Do not claim completion unless you can name:
 Keep final reports short, but include:
 
 ```text
-symptom -> judgement standard -> placement -> first generation point -> producer artifact -> downstream consumer -> proof
+symptom -> judgement standard -> iteration relationship -> placement -> first generation point -> producer artifact -> downstream consumer -> proof
 ```
 
 If no code or contract was changed, explicitly say the result is only a planning or diagnosis pass.
