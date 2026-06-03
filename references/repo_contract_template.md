@@ -21,6 +21,7 @@ system_capability_iteration:
   consumption_map_required: true
   judgement_standard_required: true
   iteration_delta_checklist_required: true
+  alignment_artifact_required_for_durable_judgement: true
   problem_classes:
     - single_bug
     - path_fork
@@ -33,6 +34,7 @@ system_capability_iteration:
     - identify_user_symptom_and_real_target
     - extract_human_judgement_standard
     - classify_iteration_delta
+    - write_alignment_artifact_when_durable
     - classify_problem
     - classify_feedback_placement
     - locate_first_decision_entrypoint
@@ -54,6 +56,15 @@ system_capability_iteration:
     - exception
     - experiment
     - deprecate
+  alignment_record_fields:
+    - aligned_at
+    - alignment
+    - trigger_context
+    - correct_judgement
+    - enters
+    - owner_contract_or_doc
+    - runtime_consumer
+    - proof_or_test
   feedback_placement:
     preference:
       default_handling: prompt_aesthetic_or_human_feedback
@@ -114,6 +125,7 @@ system_capability_iteration:
 - `producer_before_validator` means the first draft or first decision must change before downstream checks can be called a fix.
 - `judgement_standard_required` means the system captures what the human taught as "good" before translating it into code.
 - `iteration_delta_checklist_required` prevents multi-round feedback from becoming accidental rollback.
+- `alignment_artifact_required_for_durable_judgement` means important human-AI alignment must enter a contract, current knowledge source, prompt compiler, schema, proposed change, or explicit alignment note; chat memory alone is insufficient for runtime.
 - `consumption_map_required` means every meaningful capability change must name source, official entrypoint, first forced act, runtime artifact, downstream consumer, guardrail, and proof.
 - `feedback_placement` prevents preference and quality issues from becoming hard blockers by default.
 - `forbidden_completion_claims` prevents fake closure from validation, repair, fallback, UI hiding, or metadata alone.

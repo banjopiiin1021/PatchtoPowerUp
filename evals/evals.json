@@ -24,6 +24,12 @@
       "prompt": "我连续提了三轮修改，但不是要推翻上一轮。先帮我判断这些反馈是取并集、演进、收窄、替换、推翻、例外还是实验，不要动不动回退。",
       "expected_output": "Should use the iteration delta checklist, default to union/evolution/constrain when rollback is not explicit, name what to keep/add/change/remove, and require official proof for replacement, deprecation, or reversal.",
       "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "我和 AI 对齐了一个重要判断：声音流是触点，场景营销是策略方法。这个不能只留在聊天里。你应该怎么处理？",
+      "expected_output": "Should create an alignment record with aligned_at, alignment, trigger_context, correct_judgement, target artifact, runtime consumer, and proof/test, and state that runtime-affecting alignment must enter current contract, knowledge, prompt compiler, schema, or proposed change.",
+      "files": []
     }
   ]
 }

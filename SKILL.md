@@ -55,6 +55,9 @@ Use this skill immediately when the user says or implies:
 - "不要动不动回退"
 - "这是演进还是推翻"
 - "多次反馈怎么合并"
+- "这个对齐存在哪里"
+- "对齐即文档"
+- "下次新 session 还会不会记得"
 
 If the issue also involves installed capability not entering the main path, use `capability-frontloading`.
 If the issue also involves duplicate paths or one evolving contract, use `single-contract-evolution`.
@@ -180,6 +183,51 @@ Default bias:
 
 The goal is cumulative product learning without accidental rollback.
 
+## Alignment As Artifact
+
+When the human and AI align on an important judgement, do not leave it only in chat.
+Turn the alignment into a durable artifact immediately.
+
+Use this when a judgement is:
+
+- likely to recur across projects, sessions, accounts, or nodes
+- a business ontology boundary
+- a product role or visible/backstage boundary
+- a strategy reasoning rule
+- a producer permission or fallback boundary
+- a source-truth or evidence-use rule
+
+Minimum alignment record:
+
+```text
+aligned_at:
+alignment:
+trigger_context:
+correct_judgement:
+enters:
+owner_contract_or_doc:
+runtime_consumer:
+proof_or_test:
+```
+
+Example:
+
+```text
+aligned_at: 2026-06-03
+alignment: Voice stream ads are touchpoints; scenario marketing is a strategy method. They must not be mixed.
+trigger_context: Strategy directly recommended voice stream ads as the main strategy.
+correct_judgement: Strategy must first define the scenario strategy; voice stream can only be an execution touchpoint inside that strategy.
+enters: strategy reasoning contract
+owner_contract_or_doc: contracts/workflows/brief_to_creative_collab/current.yaml
+runtime_consumer: strategy_development prompt/input builder and Blueprint handoff
+proof_or_test: test that scenario marketing is not equal to scenario voice stream
+```
+
+If the alignment affects runtime behavior, it must enter the active contract, current knowledge, prompt compiler, schema, or official input builder.
+Memory or chat notes are not enough.
+
+If the alignment is not yet stable enough for `current`, write it as a proposed change or dated alignment note with promotion criteria.
+
 ## Translate Complaints Into Product Shape
 
 The user may describe product shape through dissatisfaction instead of product language.
@@ -235,6 +283,7 @@ Before implementation, produce this map:
 problem symptom
 -> judgement standard
 -> iteration relationship
+-> alignment artifact, if a new durable judgement was learned
 -> root-cause layer
 -> capability source
 -> official entrypoint
@@ -382,6 +431,7 @@ Produce reviewable artifacts:
 
 - classification result
 - iteration delta checklist
+- alignment record or contract patch when a durable judgement was learned
 - consumption map
 - proposed contract patch
 - changed producer entrypoint
@@ -425,6 +475,7 @@ Do not claim completion unless you can name:
 - the judgement standard learned from the human
 - the node-role hypothesis or product contract, if product shape was unclear
 - the iteration relationship: union, evolution, constrain, replace, reversal, exception, experiment, or deprecate
+- where any important alignment was written, or why it stayed proposed/experimental
 - the problem class
 - the feedback placement: preference, quality, contract, capability, or danger
 - whether the correction is a case fix or method upgrade

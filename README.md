@@ -151,6 +151,46 @@ Default bias:
 
 This prevents the AI from deleting useful capability just because the next feedback adds another boundary.
 
+## Alignment Must Become An Artifact
+
+Sometimes the most important thing in a session is not a code change.
+It is a shared judgement.
+
+Example:
+
+```text
+Voice stream ads are execution touchpoints.
+Scenario marketing is a strategy method and solution package.
+They must not be mixed.
+```
+
+If that alignment lives only in chat, the next project has to rediscover it.
+So the skill requires an alignment record whenever a judgement should affect future behavior:
+
+```yaml
+alignment_record:
+  aligned_at: "2026-06-03"
+  alignment: "Voice stream ads are touchpoints; scenario marketing is a strategy method."
+  trigger_context: "Strategy recommended voice stream ads directly as the main strategy."
+  correct_judgement: "Strategy must first define the scenario strategy; voice stream can only be one execution touchpoint inside it."
+  enters: "current_contract"
+  owner_contract_or_doc: "contracts/workflows/brief_to_creative_collab/current.yaml"
+  runtime_consumer:
+    - "strategy_development prompt"
+    - "Blueprint handoff"
+  proof_or_test:
+    - "test_scenario_marketing_is_not_scene_audio_stream"
+```
+
+The rule is simple:
+
+```text
+chat memory helps recall
+artifact makes the system behave differently
+```
+
+If the alignment affects runtime, it must enter a contract, current knowledge source, prompt compiler, schema, official input builder, proposed change, or explicit alignment note with promotion criteria.
+
 ## Product Shape: Ask A Smaller Question
 
 When the user has not fully defined who a node serves, the AI should not ask:
@@ -195,6 +235,7 @@ The bundled pattern library includes:
 - `Fallback Shadow Audit`: find fallback that recreates missing meaning downstream.
 - `Node Role Contract`: clarify who a node serves before implementation.
 - `Iteration Delta Ledger`: keep, add, change, and deprecate explicitly across feedback rounds.
+- `Alignment Record`: turn important shared judgement into a contract, knowledge, prompt, schema, or proposed change artifact.
 
 See [references/producer_pattern_library.md](references/producer_pattern_library.md).
 
@@ -210,6 +251,7 @@ PatchtoPowerUp/
 └── references/
     ├── producer_pattern_library.md
     ├── iteration_delta_checklist.md
+    ├── alignment_as_artifact.md
     └── repo_contract_template.md
 ```
 

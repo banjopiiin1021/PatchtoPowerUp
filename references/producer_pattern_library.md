@@ -263,3 +263,29 @@ Rules:
 - Never delete a working capability just because the next feedback adds a new boundary.
 - If a rule is replaced, name the old rule and add a no-read/no-use check for the old path.
 - If something is only an experiment, label it non-authoritative and define promotion criteria.
+
+## Pattern 13: Alignment Record
+
+Use when a conversation resolves an important judgement that future runs must not rediscover from scratch.
+
+```yaml
+alignment_record:
+  aligned_at: ""
+  alignment: ""
+  trigger_context: ""
+  correct_judgement: ""
+  enters: "current_contract | proposed_change | knowledge_current | prompt_compiler | schema | pattern_library | memory_note"
+  owner_contract_or_doc: ""
+  runtime_consumer:
+    - ""
+  proof_or_test:
+    - ""
+```
+
+Rules:
+
+- If it affects runtime, memory alone is not enough.
+- If it is stable, enter `current` or the active knowledge source.
+- If it is not stable, record as proposed with promotion criteria.
+- Name the runtime consumer so the record is not just documentation.
+- Add at least one proof path when the alignment prevents a known regression.
